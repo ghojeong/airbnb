@@ -1,12 +1,7 @@
 import styled from "styled-components";
+import { useState } from "react";
+// import { FilterKind } from "util/enum"; 타입스크립트 에러 해결 후 적용
 
-//쓰고싶음..
-// enum FilterKind {
-//   checkIn = "CHECK_IN",
-//   checkOut = "CHECK_OUT",
-//   price = "PRICE",
-//   guest = "GUESTS",
-// }
 const FILTER_STYLE = {
   CHECK_IN: {
     title: "체크인",
@@ -36,13 +31,13 @@ const FILTER_STYLE = {
 const getFilterContent = (type, state) => {
   switch (type) {
     case "CHECK_IN":
-      return `${state.month}월 ${state.date}일`;
+      return `${state.checkInMonth}월 ${state.checkInDate}일`;
     case "CHECK_OUT":
-      return `${state.month}월 ${state.date}일`;
+      return `${state.checkOutMonth}월 ${state.checkOutDate}일`;
     case "PRICE":
       return `${state.min.toLocaleString()} ~ ${state.max.toLocaleString()}`;
     case "GUESTS":
-      return `게스트 ${state.guest}명, 유아 ${state.toddler}명`;
+      return `게스트 ${state.adult + state.child}명, 유아 ${state.toddler}명`;
     default:
       throw new Error("Unhandled Filter Type");
   }
@@ -52,19 +47,39 @@ const renderFilterContent = () => {
   //state가 바뀌었는지에 따라서 place holder(기본상태)를 보여주거나 {getFilterContent(filterType, filterState)}를 보여주거나
 };
 
-const SelectFilter = ({ filterType, filterState }) => {
+const SelectFilter = ({ filterType, filterState = null }) => {
+  const handlerClick = e => {
+    console.log(e.target);
+    //() => setClicked(x => !x)
+  };
   return (
     <>
-      <SearchBarBox _width={FILTER_STYLE[`${filterType}`].width}>
+      <SearchBarBox
+        _width={FILTER_STYLE[`${filterType}`].width}
+        onClick={handlerClick}
+      >
         <SearchBarTitle>{FILTER_STYLE[`${filterType}`].title}</SearchBarTitle>
         <SearchBarText>
-          {getFilterContent(filterType, filterState)}
+          {/* {getFilterContent(filterType, filterState)} */}
         </SearchBarText>
       </SearchBarBox>
     </>
   );
 };
 
+const SearchBarBox = styled.div`
+  /* background-color: ${props => (props.clicked ? "red" : "blue")}; */
+  padding: 2% 0% 2% 3%;
+  width: ${props => props._width};
+  text-align: left;
+  border-radius: 60px;
+  box-shadow: 5px gray;
+  cursor: pointer;
+  :hover {
+    background-color: #f5f5f7;
+    transition: background-color 0.4s;
+  }
+`;
 const SearchBarTitle = styled.div`
   /* font-size: 1.2rem; */
   font-size: 12px;
@@ -74,16 +89,6 @@ const SearchBarTitle = styled.div`
 const SearchBarText = styled.div`
   /* font-size: 1.6rem; */
   font-size: 16px;
-`;
-
-const SearchBarBox = styled.div`
-  padding: 2% 0% 2% 3%;
-  width: ${props => props._width};
-  text-align: left;
-  border-radius: 60px;
-  :hover {
-    background-color: #f5f5f7;
-  }
 `;
 
 export default SelectFilter;
