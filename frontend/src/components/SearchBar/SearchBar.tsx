@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { useState, useReducer } from "react";
-import Calendar from "components/Calendar/Calendar";
-import Guests from "components/Guests/Guests";
-import RoomPrice from "components/RoomPrice/RoomPrice";
-import SearchFilter from "components/SearchBar/SearchFilter";
+import CalendarModal from "components/SearchBar/Calendar/CalendarModal";
+import Guests from "components/SearchBar/Guests/GuestsModal";
+import RoomPrice from "components/SearchBar/RoomPrice/RoomPriceModal";
+import SearchFilters from "components/SearchBar/SearchFilters";
 import {
   CalendarState,
   CalendarAction,
@@ -12,7 +12,7 @@ import {
   GuestsState,
   GuestsAction,
 } from "util/type/searchBarType";
-import { ReactComponent as CancelButton } from "image/cancelBtn.svg"; //뭔가..너무 많은데?
+
 import { ReactComponent as SmallSearchBtn } from "image/smallSearchBtn.svg";
 import { ReactComponent as MediumSearchBtn } from "image/mediumSearchBtn.svg";
 import { FilterKind, ActionKind } from "util/enum";
@@ -98,6 +98,7 @@ const guestsReducer = (
       throw new Error("Unhandled action");
   }
 };
+
 const initialState = {
   calendar: {
     checkInMonth: 1,
@@ -109,6 +110,7 @@ const initialState = {
   guests: { adult: 0, child: 0, toddler: 0 },
 };
 
+//여기서 부터 시작-----------------------------------------------------------------
 const SearchBar = () => {
   const [calendarState, calendarDispatch] = useReducer(
     calendarReducer,
@@ -124,31 +126,40 @@ const SearchBar = () => {
     guestsReducer,
     initialState.guests
   );
-
+  const [toggleFlag, setToggle] = useState(false);
   const getFilterState = (type: string) => {
     switch (type) {
-      case "CHECK_IN" || "CHECK_OUT":
+      case "CHECK_IN":
+        return calendarState;
+      case "CHECK_OUT":
         return calendarState;
       case "PRICE":
         return priceState;
       case "GUESTS":
         return guestsState;
       default:
-        throw new Error("Unhandled action???"); //왜 여기로 들어감?
+        throw new Error("Unhandled action???");
     }
   };
   //취소 버튼 눌렀을 때 상태 리셋을 어떻게 할 것인가?
-  const SEARCH_FILTER = ["CHECK_IN", "CHECK_OUT", "PRICE", "GUESTS"];
+  const SEARCH_FILTER: Array<string> = [
+    "CHECK_IN",
+    "CHECK_OUT",
+    "PRICE",
+    "GUESTS",
+  ];
 
   return (
     <SearchBarLayout>
       <SearchBarContainer>
         <SearchBarDiv>
-          {SEARCH_FILTER.map((type, idx) => (
-            <SearchFilter
+          {SEARCH_FILTER.map((type: any, idx: number) => (
+            <SearchFilters
               key={`filter-${idx}`}
               filterType={type}
-              // filterState={getFilterState(type)}
+              filterState={getFilterState(type)}
+              calendarDispatch={calendarDispatch}
+              setToggle={setToggle}
             />
           ))}
         </SearchBarDiv>
@@ -157,7 +168,7 @@ const SearchBar = () => {
         <SmallSearchButton />
         <MediumSearchButton />
       </SearchBarContainer>
-      <Calendar dispatch={calendarDispatch} />
+      <CalendarModal />
       <RoomPrice />
       <Guests />
     </SearchBarLayout>

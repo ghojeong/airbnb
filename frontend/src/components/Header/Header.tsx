@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ReactComponent as Logo } from "components/common/Logo.svg";
+import { ReactComponent as Logo } from "image/Logo.svg";
 import Login from "components/Header/Login";
 // type HeaderProps = {
 //   title: string;
