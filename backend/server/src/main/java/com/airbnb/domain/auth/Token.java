@@ -1,4 +1,4 @@
-package com.airbnb.domain;
+package com.airbnb.domain.auth;
 
 public class Token {
     private final String accessToken;

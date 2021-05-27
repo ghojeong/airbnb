@@ -1,6 +1,6 @@
 package com.airbnb.dto;
 
-import com.airbnb.domain.User;
+import com.airbnb.domain.auth.User;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
@@ -39,7 +39,7 @@ public class UserDto {
         return new User(login, name);
     }
 
-    public static UserDto from (User user) {
+    public static UserDto from(User user) {
         return new UserDto(user.getLogin(), user.getName());
     }
 }

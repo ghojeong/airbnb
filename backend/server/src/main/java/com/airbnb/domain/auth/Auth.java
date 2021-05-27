@@ -1,4 +1,4 @@
-package com.airbnb.domain;
+package com.airbnb.domain.auth;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
@@ -18,7 +18,7 @@ public class Auth {
         this.token = token;
     }
 
-    public static Auth from (User user, Token token) {
+    public static Auth from(User user, Token token) {
         return new Auth(user.getLogin(), user, token);
     }
 }
