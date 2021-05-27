@@ -1,4 +1,4 @@
-package com.airbnb.dto.mainpage.search;
+package com.airbnb.dto.room;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
