@@ -8,7 +8,7 @@ public class RoomDto {
     private final String roomType;
     private final String roomName;
     private final String roomLabel;
-    private final CoordinateDto coordinateDto;
+    private final CoordinateDto coordinate;
     private final String publicAddress;
     private final Integer personCapacity;
     private final float starRating;
@@ -22,7 +22,7 @@ public class RoomDto {
         this.roomType = room.getRoomType();
         this.roomName = room.getRoomName();
         this.roomLabel = room.getRoomLabel();
-        this.coordinateDto = CoordinateDto.from(room.getCoordinate());
+        this.coordinate = CoordinateDto.from(room.getCoordinate());
         this.publicAddress = room.getPublicAddress();
         this.personCapacity = room.getPersonCapacity();
         this.starRating = room.getStarRating();
@@ -56,8 +56,8 @@ public class RoomDto {
         return roomLabel;
     }
 
-    public CoordinateDto getCoordinateDto() {
-        return coordinateDto;
+    public CoordinateDto getCoordinate() {
+        return coordinate;
     }
 
     public String getPublicAddress() {

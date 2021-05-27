@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RoomListResponse {
-    private final List<RoomDto> roomDtoList = new ArrayList<>();
+    private final List<RoomDto> roomList = new ArrayList<>();
 
     private RoomListResponse(List<Room> roomList) {
         for (Room room : roomList) {
-            roomDtoList.add(RoomDto.from(room));
+            this.roomList.add(RoomDto.from(room));
         }
     }
 
@@ -18,7 +18,7 @@ public class RoomListResponse {
         return new RoomListResponse(roomList);
     }
 
-    public List<RoomDto> getRoomDtoList() {
-        return roomDtoList;
+    public List<RoomDto> getRoomList() {
+        return roomList;
     }
 }

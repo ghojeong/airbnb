@@ -1,22 +1,22 @@
 package com.airbnb.controller;
 
 import com.airbnb.dto.room.RoomListResponse;
-import com.airbnb.service.RoomListService;
+import com.airbnb.service.RoomService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
-public class RoomListController {
-    private final RoomListService roomListService;
+public class RoomController {
+    private final RoomService roomService;
 
-    public RoomListController(RoomListService roomListService) {
-        this.roomListService = roomListService;
+    public RoomController(RoomService roomService) {
+        this.roomService = roomService;
     }
 
     @GetMapping("/search")
     public RoomListResponse getRoomList() {
-        return roomListService.getRoomList();
+        return roomService.getRoomList();
     }
 }

@@ -4,14 +4,14 @@ import com.airbnb.domain.mainpage.search.SearchInputComponents;
 
 public class SearchInputComponentsDto {
 
-    private final LocationDto locationDto;
+    private final LocationDto location;
 
     private SearchInputComponentsDto(SearchInputComponents searchInputComponents) {
-        this.locationDto = LocationDto.from(searchInputComponents.getLocation());
+        this.location = LocationDto.from(searchInputComponents.getLocation());
     }
 
-    public LocationDto getLocationDto() {
-        return locationDto;
+    public LocationDto getLocation() {
+        return location;
     }
 
     public static SearchInputComponentsDto from(SearchInputComponents searchInputComponents) {
