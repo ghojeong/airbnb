@@ -16,10 +16,8 @@ public class PaymentDetailsController {
         this.paymentDetailsService = paymentDetailsService;
     }
 
-    @GetMapping("/popup")
+    @GetMapping("/payments")
     public PaymentDetailsDto getPayment(PaymentDetailsRequest paymentDetailsRequest) {
-        System.out.println("paymentDetailsRequest.getCheckOut() = " + paymentDetailsRequest.getCheckOut());
-        System.out.println("paymentDetailsRequest.getCheckIn() = " + paymentDetailsRequest.getCheckIn());
         return paymentDetailsService.getPaymentDetailsDto(paymentDetailsRequest);
     }
 }
