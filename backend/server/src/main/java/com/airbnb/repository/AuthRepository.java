@@ -1,6 +1,6 @@
 package com.airbnb.repository;
 
-import com.airbnb.domain.Auth;
+import com.airbnb.domain.auth.Auth;
 import org.springframework.data.repository.CrudRepository;
 
 /**

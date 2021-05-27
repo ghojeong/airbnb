@@ -1,4 +1,4 @@
-package com.airbnb.domain;
+package com.airbnb.domain.auth;
 
 public class User {
     private final String login;

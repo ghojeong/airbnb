@@ -1,6 +1,6 @@
 package com.airbnb.dto;
 
-import com.airbnb.domain.Token;
+import com.airbnb.domain.auth.Token;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
