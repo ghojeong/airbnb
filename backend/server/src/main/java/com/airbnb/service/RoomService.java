@@ -1,7 +1,7 @@
 package com.airbnb.service;
 
-import com.airbnb.dto.mainpage.search.SearchRequest;
 import com.airbnb.dto.room.RoomListResponse;
+import com.airbnb.dto.room.SearchRequest;
 import com.airbnb.repository.RoomRepository;
 import org.springframework.stereotype.Service;
 
