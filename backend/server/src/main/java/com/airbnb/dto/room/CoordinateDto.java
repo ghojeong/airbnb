@@ -1,6 +1,6 @@
 package com.airbnb.dto.room;
 
-import com.airbnb.domain.roomlist.Coordinate;
+import com.airbnb.domain.room.Coordinate;
 
 public class CoordinateDto {
     private final float latitude;

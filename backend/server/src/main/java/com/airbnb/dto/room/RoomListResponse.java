@@ -1,6 +1,6 @@
 package com.airbnb.dto.room;
 
-import com.airbnb.domain.roomlist.Room;
+import com.airbnb.domain.room.Room;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.airbnb.dto.payment;
 
-import com.airbnb.domain.payment.PaymentDetails;
+import com.airbnb.domain.room.Payment;
 
 public class PaymentDetailsDto {
     private final Integer totalRoomPrice;
@@ -17,15 +17,15 @@ public class PaymentDetailsDto {
         this.roomTax = roomTax;
     }
 
-    private PaymentDetailsDto(PaymentDetails paymentDetails) {
-        this.totalRoomPrice = paymentDetails.getTotalRoomPrice();
-        this.discount = paymentDetails.getDiscount();
-        this.cleaningFee = paymentDetails.getCleaningFee();
-        this.serviceFee = paymentDetails.getServiceFee();
-        this.roomTax = paymentDetails.getRoomTax();
+    private PaymentDetailsDto(Payment payment) {
+        this.totalRoomPrice = payment.getTotalRoomPrice();
+        this.discount = payment.getDiscount();
+        this.cleaningFee = payment.getCleaningFee();
+        this.serviceFee = payment.getServiceFee();
+        this.roomTax = payment.getRoomTax();
     }
 
-    public static PaymentDetailsDto from(PaymentDetails paymentDetail) {
+    public static PaymentDetailsDto from(Payment paymentDetail) {
         return new PaymentDetailsDto(paymentDetail);
     }
 

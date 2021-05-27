@@ -1,13 +1,13 @@
-package com.airbnb.domain.payment;
+package com.airbnb.domain.room;
 
-public class PaymentDetails {
+public class Payment {
     private final Integer totalRoomPrice;
     private final float discount;
     private final Integer cleaningFee;
     private final Integer serviceFee;
     private final float roomTax;
 
-    public PaymentDetails(Integer totalRoomPrice, float discount, Integer cleaningFee, Integer serviceFee, float roomTax) {
+    public Payment(Integer totalRoomPrice, float discount, Integer cleaningFee, Integer serviceFee, float roomTax) {
         this.totalRoomPrice = totalRoomPrice;
         this.discount = discount;
         this.cleaningFee = cleaningFee;
