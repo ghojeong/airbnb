@@ -3,8 +3,8 @@ package com.airbnb.dto.room;
 import com.airbnb.domain.room.Coordinate;
 
 public class CoordinateDto {
-    private final float latitude;
-    private final float longitude;
+    private final Float latitude;
+    private final Float longitude;
 
     public CoordinateDto(float latitude, float longitude) {
         this.latitude = latitude;
@@ -16,11 +16,11 @@ public class CoordinateDto {
         this.longitude = coordinate.getLongitude();
     }
 
-    public float getLatitude() {
+    public Float getLatitude() {
         return latitude;
     }
 
-    public float getLongitude() {
+    public Float getLongitude() {
         return longitude;
     }
 

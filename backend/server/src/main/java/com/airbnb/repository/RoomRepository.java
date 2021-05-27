@@ -20,8 +20,6 @@ public class RoomRepository {
                 3,
                 4.80f,
                 "후기 127개",
-                82953,
-                128136,
                 new Coordinate(37.4909f, 127.0328f),
                 new Payment(130000, 0.96f, 20000, 10000, 1.05f)
         ));
@@ -32,8 +30,6 @@ public class RoomRepository {
                 3,
                 4.80f,
                 "후기 127개",
-                82953,
-                128136,
                 new Coordinate(37.4909f, 127.0328f),
                 new Payment(130000, 0.96f, 20000, 10000, 1.05f)
         ));

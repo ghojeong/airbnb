@@ -1,19 +1,19 @@
 package com.airbnb.domain.room;
 
 public class Coordinate {
-    private final float latitude;
-    private final float longitude;
+    private final Float latitude;
+    private final Float longitude;
 
     public Coordinate(float latitude, float longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
-    public float getLatitude() {
+    public Float getLatitude() {
         return latitude;
     }
 
-    public float getLongitude() {
+    public Float getLongitude() {
         return longitude;
     }
 }
