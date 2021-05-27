@@ -1,32 +1,41 @@
+import { useState, useEffect } from 'react';
 import * as S from "components/SearchBar/Calendar/CalendarStyles";
 import moment, { Moment } from "moment";
 import 'moment/locale/ko';
 moment.locale('ko');
 
 const CalendarModal = () => {
-  const value = moment(); //현재 날짜값 가져오기
+  // const calendar:Array<Moment[]> = [];
+  const [calendar, setCalendar] = useState([]);
+  const [value, setValue] = useState(moment());
+
   const startDay = value.clone().startOf("month").startOf("week");//clone을 해주는 이유 = 원본 now Date를 보존하기 위해.
   const endDay = value.clone().endOf("month").endOf("week");
-  const day = startDay.clone().subtract(1, "day"); //시작일에서 하루 빼기
-  const calendar:Array<Moment[]> = [];
-
+  
   //들어오는 day 값이 endDay 이전 값인지 체크.
-  const createCalendar = () => {
+  useEffect(() => {
+    const day = startDay.clone().subtract(1, "day"); //시작일에서 하루 빼기
+    const temp: Moment = [];
     while(day.isBefore(endDay, "day")) {
-      calendar.push(Array(7).fill(0).map(() => day.add(1, "day").clone()));
+      temp.push(Array(7).fill(0).map(() => day.add(1, "day").clone()));
+      //format()을 하면 moment 객체에서 string으로 바꿔줌.
+      //[[1, 2, 3, 4, 5, 6, 7], [8, 9, 10, 11, 12, 13, 14], [],,]
+      // calendar.map(week =>
+      //   <div className="day">
+      //     {week.map((day) => {
+      //       <div>{day.format("D").toString()}</div>
+      //   })}
+      //   </div>
+      // )
     }
-    //format()을 하면 moment 객체에서 string으로 바꿔줌.
-    //[[1, 2, 3, 4, 5, 6, 7], [8, 9, 10, 11, 12, 13, 14], [],,]
-    return calendar.map(week =>
-      <div className="calendar">
-        {week.map((day) => {
-          <div>{day.format("D").toString()}</div>
-      })}
-      </div>
-    )
-  }
+    setCalendar(temp);
+  }, [value])
 
-  console.log(startDay.format("D").toString(), endDay.format("D").toString(), day.format("D").toString());
+  // useEffect(() => {
+  //   createCalendar();
+  // }, [])
+
+  console.log(startDay.format("D").toString(), endDay.format("D").toString());
 
   return (
     <S.CalendarModalLayout>
@@ -53,7 +62,7 @@ const CalendarModal = () => {
               <S.RiArrowRightSLine/>
             </S.RightArrowBtn>
           </div>
-          <S.CalendarMatrix></S.CalendarMatrix>
+          <S.CalendarMatrix>{calendar}</S.CalendarMatrix>
         </S.NextMonth>
       </S.CalendarLayout>
     </S.CalendarModalLayout>

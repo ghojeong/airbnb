@@ -28,12 +28,12 @@ const CalendarSelector = styled.div`
   & > div {
     background-color: #e6e6e6;
     border-radius: 100px;
-    margin-top: 1rem;
+    margin-top: 1.6rem;
     & > button {
       border-radius: 100px;
       border: none;
-      font-size: 0.9rem;
-      line-height: 1.8rem;
+      font-size: 1.4rem;
+      line-height: 2.5rem;
       font-weight: 400;
       background: #fff;
       color: rgb(34, 34, 34);
@@ -47,6 +47,9 @@ const CalendarSelector = styled.div`
           background-color: #fff;
           transition: background-color 0.4s;
         }
+        &:not(:hover) {
+          transition: background-color 0.4s;
+        }
       }
     }
   }
@@ -55,22 +58,23 @@ const CalendarSelector = styled.div`
 const CalendarLayout = styled.div`
   outline: red solid 1px;
   width: 90%;
-  margin: 1rem;
+  margin: 1.6rem;
   padding: 1.5rem;
-  font-size: 1rem;
+  font-size: 1.6rem;
   font-weight: 600;
   display: flex;
 
-  .calendar {
+  .day {
+      
   }
-`;
+`
 
 const LeftArrowBtn = styled.button`
   position: absolute;
   left: 0;
   top: 0;
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border: none;
   border-radius: 99px;
   background-color: #fff;
@@ -80,8 +84,8 @@ const LeftArrowBtn = styled.button`
   }
 
   & > svg {
-    height: 1.2rem;
-    width: 1.2rem;
+    height: 2rem;
+    width: 2rem;
   }
 `;
 
@@ -89,8 +93,8 @@ const RightArrowBtn = styled.button`
   position: absolute;
   right: 0;
   top: 0;
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border: none;
   border-radius: 99px;
   background-color: #fff;
@@ -100,14 +104,13 @@ const RightArrowBtn = styled.button`
   }
 
   & > svg {
-    height: 1.2rem;
-    width: 1.2rem;
+    height: 2rem;
+    width: 2rem;
   }
 `;
 
 const CurrentMonth = styled.div`
   display: flex;
-  border: 1px solid green;
   width: 50%;
   text-align: center;
   flex-direction: column;
@@ -115,7 +118,6 @@ const CurrentMonth = styled.div`
   &:first-child {
     position: relative;
     display: flex;
-    border: 1px solid pink;
     align-items: center;
   }
 
@@ -129,15 +131,14 @@ const CurrentMonth = styled.div`
 
 const NextMonth = styled.div`
   display: flex;
-  border: 1px solid green;
   width: 50%;
   text-align: center;
   flex-direction: column;
+  margin-bottom: 1rem;
 
   &:last-child {
     position: relative;
     display: flex;
-    border: 1px solid pink;
     align-items: center;
   }
 
@@ -151,7 +152,9 @@ const NextMonth = styled.div`
 const CalendarMatrix = styled.div`
   border: 1px solid blue;
   width: 100%;
-`;
+  margin-top: 1rem;
+  height: 20rem;
+`
 
 export {
   CalendarModalLayout,
