@@ -1,6 +1,7 @@
 package com.airbnb.service;
 
 import com.airbnb.dto.payment.PaymentDetailsDto;
+import com.airbnb.dto.payment.PaymentDetailsRequest;
 import com.airbnb.repository.PaymentDetailsRepository;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ public class PaymentDetailsService {
         this.paymentDetailsRepository = paymentDetailsRepository;
     }
 
-    public PaymentDetailsDto getPaymentDetailsDto() {
+    public PaymentDetailsDto getPaymentDetailsDto(PaymentDetailsRequest paymentDetailsRequest) {
         return PaymentDetailsDto.from(paymentDetailsRepository.getPaymentDetail());
     }
 }
