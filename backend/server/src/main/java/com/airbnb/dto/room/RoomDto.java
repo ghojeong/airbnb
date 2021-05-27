@@ -1,6 +1,6 @@
 package com.airbnb.dto.room;
 
-import com.airbnb.domain.roomlist.Room;
+import com.airbnb.domain.room.Room;
 
 public class RoomDto {
     private final Long id;

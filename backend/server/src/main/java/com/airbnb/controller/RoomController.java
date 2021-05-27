@@ -1,5 +1,7 @@
 package com.airbnb.controller;
 
+import com.airbnb.dto.payment.PaymentDetailsDto;
+import com.airbnb.dto.payment.PaymentDetailsRequest;
 import com.airbnb.dto.room.RoomListResponse;
 import com.airbnb.dto.room.SearchRequest;
 import com.airbnb.service.RoomService;
@@ -19,5 +21,10 @@ public class RoomController {
     @GetMapping("/rooms")
     public RoomListResponse getRoomList(SearchRequest searchRequest) {
         return roomService.getRoomList(searchRequest);
+    }
+
+    @GetMapping("/payments")
+    public PaymentDetailsDto getPayment(PaymentDetailsRequest paymentDetailsRequest) {
+        return roomService.getPaymentDetailsDto(paymentDetailsRequest);
     }
 }

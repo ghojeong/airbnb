@@ -1,4 +1,4 @@
-package com.airbnb.domain.roomlist;
+package com.airbnb.domain.room;
 
 public class Room {
     private final Long id;
@@ -6,27 +6,29 @@ public class Room {
     private final String roomType;
     private final String roomName;
     private final String roomLabel;
-    private final Coordinate coordinate;
     private final String publicAddress;
     private final Integer personCapacity;
     private final float starRating;
     private final String reviewLabel;
     private final float price;
     private final float totalPrice;
+    private final Coordinate coordinate;
+    private final Payment payment;
 
-    public Room(Long id, String thumImage, String roomType, String roomName, String roomLabel, Coordinate coordinate, String publicAddress, Integer personCapacity, float starRating, String reviewLabel, int price, int totalPrice) {
+    public Room(Long id, String thumImage, String roomType, String roomName, String roomLabel, String publicAddress, Integer personCapacity, float starRating, String reviewLabel, float price, float totalPrice, Coordinate coordinate, Payment payment) {
         this.id = id;
         this.thumImage = thumImage;
         this.roomType = roomType;
         this.roomName = roomName;
         this.roomLabel = roomLabel;
-        this.coordinate = coordinate;
         this.publicAddress = publicAddress;
         this.personCapacity = personCapacity;
         this.starRating = starRating;
         this.reviewLabel = reviewLabel;
         this.price = price;
         this.totalPrice = totalPrice;
+        this.coordinate = coordinate;
+        this.payment = payment;
     }
 
     public Long getId() {
@@ -47,10 +49,6 @@ public class Room {
 
     public String getRoomLabel() {
         return roomLabel;
-    }
-
-    public Coordinate getCoordinate() {
-        return coordinate;
     }
 
     public String getPublicAddress() {
@@ -75,5 +73,13 @@ public class Room {
 
     public float getTotalPrice() {
         return totalPrice;
+    }
+
+    public Coordinate getCoordinate() {
+        return coordinate;
+    }
+
+    public Payment getPayment() {
+        return payment;
     }
 }

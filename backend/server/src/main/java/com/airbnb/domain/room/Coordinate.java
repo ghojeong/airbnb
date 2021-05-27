@@ -1,4 +1,4 @@
-package com.airbnb.domain.roomlist;
+package com.airbnb.domain.room;
 
 public class Coordinate {
     private final float latitude;
