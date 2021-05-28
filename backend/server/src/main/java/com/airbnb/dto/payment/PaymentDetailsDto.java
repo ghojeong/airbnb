@@ -18,7 +18,7 @@ public class PaymentDetailsDto {
     }
 
     private PaymentDetailsDto(Payment payment) {
-        this.totalRoomPrice = payment.getTotalRoomPrice();
+        this.totalRoomPrice = payment.getPrice();
         this.discount = payment.getDiscount();
         this.cleaningFee = payment.getCleaningFee();
         this.serviceFee = payment.getServiceFee();

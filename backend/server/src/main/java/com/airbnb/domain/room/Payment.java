@@ -1,25 +1,25 @@
 package com.airbnb.domain.room;
 
 public class Payment {
-    private final Integer totalRoomPrice;
-    private final float discount;
+    private final Integer price;
+    private final Float discount;
     private final Integer cleaningFee;
     private final Integer serviceFee;
-    private final float roomTax;
+    private final Float roomTax;
 
-    public Payment(Integer totalRoomPrice, float discount, Integer cleaningFee, Integer serviceFee, float roomTax) {
-        this.totalRoomPrice = totalRoomPrice;
+    public Payment(Integer price, float discount, Integer cleaningFee, Integer serviceFee, float roomTax) {
+        this.price = price;
         this.discount = discount;
         this.cleaningFee = cleaningFee;
         this.serviceFee = serviceFee;
         this.roomTax = roomTax;
     }
 
-    public Integer getTotalRoomPrice() {
-        return totalRoomPrice;
+    public Integer getPrice() {
+        return price;
     }
 
-    public float getDiscount() {
+    public Float getDiscount() {
         return discount;
     }
 
@@ -31,7 +31,7 @@ public class Payment {
         return serviceFee;
     }
 
-    public float getRoomTax() {
+    public Float getRoomTax() {
         return roomTax;
     }
 }

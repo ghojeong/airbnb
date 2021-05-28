@@ -8,14 +8,12 @@ public class Room {
     private final String roomLabel;
     private final String publicAddress;
     private final Integer personCapacity;
-    private final float starRating;
+    private final Float starRating;
     private final String reviewLabel;
-    private final float price;
-    private final float totalPrice;
     private final Coordinate coordinate;
     private final Payment payment;
 
-    public Room(Long id, String thumImage, String roomType, String roomName, String roomLabel, String publicAddress, Integer personCapacity, float starRating, String reviewLabel, float price, float totalPrice, Coordinate coordinate, Payment payment) {
+    public Room(Long id, String thumImage, String roomType, String roomName, String roomLabel, String publicAddress, Integer personCapacity, float starRating, String reviewLabel, Coordinate coordinate, Payment payment) {
         this.id = id;
         this.thumImage = thumImage;
         this.roomType = roomType;
@@ -25,8 +23,6 @@ public class Room {
         this.personCapacity = personCapacity;
         this.starRating = starRating;
         this.reviewLabel = reviewLabel;
-        this.price = price;
-        this.totalPrice = totalPrice;
         this.coordinate = coordinate;
         this.payment = payment;
     }
@@ -59,20 +55,12 @@ public class Room {
         return personCapacity;
     }
 
-    public float getStarRating() {
+    public Float getStarRating() {
         return starRating;
     }
 
     public String getReviewLabel() {
         return reviewLabel;
-    }
-
-    public float getPrice() {
-        return price;
-    }
-
-    public float getTotalPrice() {
-        return totalPrice;
     }
 
     public Coordinate getCoordinate() {

@@ -11,10 +11,9 @@ public class RoomDto {
     private final CoordinateDto coordinate;
     private final String publicAddress;
     private final Integer personCapacity;
-    private final float starRating;
+    private final Float starRating;
     private final String reviewLabel;
-    private final float price;
-    private final float totalPrice;
+    private final Integer price;
 
     private RoomDto(Room room) {
         this.id = room.getId();
@@ -27,8 +26,7 @@ public class RoomDto {
         this.personCapacity = room.getPersonCapacity();
         this.starRating = room.getStarRating();
         this.reviewLabel = room.getReviewLabel();
-        this.price = room.getPrice();
-        this.totalPrice = room.getTotalPrice();
+        this.price = room.getPayment().getPrice();
     }
 
     public static RoomDto from(Room room) {
@@ -68,7 +66,7 @@ public class RoomDto {
         return personCapacity;
     }
 
-    public float getStarRating() {
+    public Float getStarRating() {
         return starRating;
     }
 
@@ -76,12 +74,7 @@ public class RoomDto {
         return reviewLabel;
     }
 
-    public float getPrice() {
+    public Integer getPrice() {
         return price;
     }
-
-    public float getTotalPrice() {
-        return totalPrice;
-    }
-
 }

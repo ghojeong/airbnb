@@ -3,45 +3,78 @@ package com.airbnb.repository;
 import com.airbnb.domain.room.Coordinate;
 import com.airbnb.domain.room.Payment;
 import com.airbnb.domain.room.Room;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
+import javax.sql.DataSource;
 import java.util.List;
 
 @Repository
 public class RoomRepository {
-    public List<Room> getRoomList() {
+    private final JdbcTemplate jdbcTemplate;
 
-        List<Room> roomList = new ArrayList<>();
-
-        roomList.add(new Room(123L, "썸네일 이미지", "서초구의 아파트 전체", "Spacious and Comfortable Cozy house #4",
-                "최대 인원 3명*원룸, 침대 1개, 욕실 1개*주방, 무선인터넷, 에어컨, 헤어드라이어",
-                "Yeoksam 1(il)-dong, Gangnam-gu, 서울, 한국",
-                3,
-                4.80f,
-                "후기 127개",
-                82953,
-                128136,
-                new Coordinate(37.4909f, 127.0328f),
-                new Payment(130000, 0.96f, 20000, 10000, 1.05f)
-        ));
-
-        roomList.add(new Room(12345L, "썸네일 이미지", "서초구의 아파트 전체", "Spacious and Comfortable Cozy house #4",
-                "최대 인원 3명*원룸, 침대 1개, 욕실 1개*주방, 무선인터넷, 에어컨, 헤어드라이어",
-                "Yeoksam 1(il)-dong, Gangnam-gu, 서울, 한국",
-                3,
-                4.80f,
-                "후기 127개",
-                82953,
-                128136,
-                new Coordinate(37.4909f, 127.0328f),
-                new Payment(130000, 0.96f, 20000, 10000, 1.05f)
-        ));
-
-        return roomList;
+    public RoomRepository(DataSource dataSource) {
+        jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public Payment getPaymentDetail() {
-        return new Payment(130000, 0.96f, 20000, 10000, 1.05f);
+    public List<Room> getRoomList(String checkIn, String checkOut, int priceMin, int priceMax) {
+
+        String sql = "SELECT * FROM `pyrodb`.`room`";
+
+        RowMapper<Room> roomRowMapper = (rs, rowNum) -> {
+
+            Long id = rs.getLong("id");
+            String thumImage = rs.getString("thumImage");
+            String roomType = rs.getString("roomType");
+            String roomName = rs.getString("roomName");
+            String roomLabel = rs.getString("roomLabel");
+            String publicAddress = rs.getString("publicAddress");
+            Integer personCapacity = rs.getInt("personCapacity");
+            Float starRating = rs.getFloat("starRating");
+            String reviewLabel = rs.getString("reviewLabel");
+
+            Float latitude = rs.getFloat("latitude");
+            Float longitude = rs.getFloat("longitude");
+
+            Integer price = rs.getInt("price");
+            Float discount = rs.getFloat("discount");
+            Integer cleaningFee = rs.getInt("cleaningFee");
+            Integer serviceFee = rs.getInt("serviceFee");
+            Float roomTax = rs.getFloat("roomTax");
+
+            Coordinate coordinate = new Coordinate(latitude, longitude);
+
+            Payment payment = new Payment(price, discount, cleaningFee, serviceFee, roomTax);
+
+            Room room = new Room(id, thumImage, roomType, roomName, roomLabel, publicAddress,
+                    personCapacity, starRating, reviewLabel, coordinate, payment);
+
+            return room;
+        };
+
+        List<Room> rooms = jdbcTemplate.query(sql, roomRowMapper);
+
+        return rooms;
+    }
+
+    public Payment getPaymentDetail(Long id, String checkIn, String checkOut, int Adults) {
+
+        String sql = "SELECT price, discount, cleaningFee, serviceFee, roomTax FROM room WHERE id = ?";
+
+        RowMapper<Payment> paymentRowMapper = (rs, rowNum) -> {
+            Integer price = rs.getInt("price");
+            Float discount = rs.getFloat("discount");
+            Integer cleaningFee = rs.getInt("cleaningFee");
+            Integer serviceFee = rs.getInt("serviceFee");
+            Float roomTax = rs.getFloat("roomTax");
+
+            Payment payment = new Payment(price, discount, cleaningFee, serviceFee, roomTax);
+            return payment;
+        };
+
+        List<Payment> payments = jdbcTemplate.query(sql, paymentRowMapper, id);
+
+        return payments.get(0);
     }
 }
