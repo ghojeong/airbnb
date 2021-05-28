@@ -16,11 +16,21 @@ public class RoomService {
     }
 
     public RoomListResponse getRoomList(SearchRequest searchRequest) {
-        return RoomListResponse.from(roomRepository.getRoomList());
+        return RoomListResponse.from(roomRepository.getRoomList(
+                searchRequest.getCheckIn(),
+                searchRequest.getCheckOut(),
+                searchRequest.getPriceMin(),
+                searchRequest.getPriceMax()
+        ));
     }
 
     public PaymentDetailsDto getPaymentDetailsDto(PaymentDetailsRequest paymentDetailsRequest) {
-        return PaymentDetailsDto.from(roomRepository.getPaymentDetail());
+        return PaymentDetailsDto.from(roomRepository.getPaymentDetail(
+                paymentDetailsRequest.getRoomId(),
+                paymentDetailsRequest.getCheckIn(),
+                paymentDetailsRequest.getCheckOut(),
+                paymentDetailsRequest.getAdults())
+        );
     }
 
 }
