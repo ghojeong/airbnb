@@ -83,4 +83,17 @@ public class RoomRepository {
 
         return payments.get(0);
     }
+
+    public List<Integer> getRoomPrices() {
+        String sql = "SELECT `pyrodb`.`room`.price FROM room ORDER BY price ASC";
+
+        RowMapper<Integer> pricesRowMapper = (rs, rowNum) -> {
+            Integer price = rs.getInt("price");
+            return price;
+        };
+
+        List<Integer> price = jdbcTemplate.query(sql, pricesRowMapper);
+
+        return price;
+    }
 }
