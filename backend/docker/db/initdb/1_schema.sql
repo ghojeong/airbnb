@@ -10,7 +10,7 @@ CREATE TABLE `pyrodb`.`user` (
 CREATE TABLE `pyrodb`.`room`
 (
     id             INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    thumImage      VARCHAR(50),
+    thumImage      VARCHAR(1000),
     roomType       VARCHAR(50),
     roomName       VARCHAR(50),
     roomLabel      VARCHAR(50),
