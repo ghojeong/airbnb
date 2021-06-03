@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api")
 public class RoomController {
@@ -26,5 +28,10 @@ public class RoomController {
     @GetMapping("/payments")
     public PaymentDetailsDto getPayment(PaymentDetailsRequest paymentDetailsRequest) {
         return roomService.getPaymentDetailsDto(paymentDetailsRequest);
+    }
+
+    @GetMapping("/graph")
+    public List<Integer> getPriceGraph() {
+        return roomService.getRoomPrice();
     }
 }

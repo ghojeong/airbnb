@@ -46,4 +46,7 @@ public class RoomService {
         );
     }
 
+    public List<Integer> getRoomPrice() {
+        return roomRepository.getRoomPrices();
+    }
 }
