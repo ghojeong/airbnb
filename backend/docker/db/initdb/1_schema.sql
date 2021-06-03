@@ -1,11 +1,11 @@
+DROP TABLE IF EXISTS `pyrodb`.`reservation` ;
 DROP TABLE IF EXISTS `pyrodb`.`user` ;
+DROP TABLE IF EXISTS `pyrodb`.`room` ;
 
 CREATE TABLE `pyrodb`.`user` (
     `login` VARCHAR(50) NOT NULL PRIMARY KEY,
     `name` VARCHAR(50) NOT NULL
 );
-
-DROP TABLE IF EXISTS `pyrodb`.`room` ;
 
 CREATE TABLE `pyrodb`.`room`
 (
@@ -27,4 +27,15 @@ CREATE TABLE `pyrodb`.`room`
     cleaningFee    INT,
     serviceFee     INT,
     roomTax        FLOAT
+);
+
+create table `pyrodb`.`reservation`
+(
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+	checkIn date,
+    checkOut date,
+    roomId int,
+    foreign key(roomId) references `pyrodb`.`room`(id),
+    userLogin varchar(50),
+    foreign key (userLogin) references `pyrodb`.`user`(logIn)
 );

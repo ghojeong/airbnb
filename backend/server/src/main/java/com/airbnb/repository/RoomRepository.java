@@ -8,6 +8,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Repository
@@ -18,9 +20,9 @@ public class RoomRepository {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public List<Room> getRoomList(String checkIn, String checkOut, int priceMin, int priceMax) {
+    public List<Room> getRoomList(String checkIn, String  checkOut, int priceMin, int priceMax) {
 
-        String sql = "SELECT * FROM `pyrodb`.`room`";
+        String sql = "SELECT `pyrodb`.`room`.* , `pyrodb`.`reservation`.id FROM `pyrodb`.`room` LEFT JOIN `pyrodb`.`reservation`  ON `pyrodb`.`room`.id = `pyrodb`.`reservation`.roomId WHERE(`reservation`.id is null or `reservation`.checkIn < ? OR `reservation`.checkOut > ?) and (`room`.price > ? and `room`.price < ?)";
 
         RowMapper<Room> roomRowMapper = (rs, rowNum) -> {
 
@@ -50,10 +52,14 @@ public class RoomRepository {
             Room room = new Room(id, thumImage, roomType, roomName, roomLabel, publicAddress,
                     personCapacity, starRating, reviewLabel, coordinate, payment);
 
+
             return room;
         };
 
-        List<Room> rooms = jdbcTemplate.query(sql, roomRowMapper);
+        LocalDate parsedCheckIn = LocalDate.parse(checkIn, DateTimeFormatter.ISO_DATE);
+        LocalDate parsedCheckOut = LocalDate.parse(checkOut, DateTimeFormatter.ISO_DATE);
+
+        List<Room> rooms = jdbcTemplate.query(sql,roomRowMapper, parsedCheckIn, parsedCheckOut, priceMin, priceMax);
 
         return rooms;
     }
