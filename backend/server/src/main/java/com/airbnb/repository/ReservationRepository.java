@@ -21,6 +21,6 @@ public class ReservationRepository {
     }
 
     public List<Long> findReservedRoom(LocalDateTime checkIn, LocalDateTime checkOut) {
-        return reservations;
+        return null;
     }
 }
