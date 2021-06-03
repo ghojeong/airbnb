@@ -22,7 +22,7 @@ public class RoomRepository {
 
     public List<Room> getRoomList(String checkIn, String  checkOut, int priceMin, int priceMax) {
 
-        String sql =" SELECT `pyrodb`.`room`.*  , `pyrodb`.`reservation`.id FROM `pyrodb`.`room` LEFT JOIN `pyrodb`.`reservation`  ON `pyrodb`.`room`.id = `pyrodb`.`reservation`.roomId WHERE(`reservation`.id is null or `reservation`.checkIn < ? OR `reservation`.checkOut > ?) and (`room`.price > ? and `room`.price < ?)";
+        String sql = "SELECT `pyrodb`.`room`.* , `pyrodb`.`reservation`.id FROM `pyrodb`.`room` LEFT JOIN `pyrodb`.`reservation`  ON `pyrodb`.`room`.id = `pyrodb`.`reservation`.roomId WHERE(`reservation`.id is null or `reservation`.checkIn < ? OR `reservation`.checkOut > ?) and (`room`.price > ? and `room`.price < ?)";
 
         RowMapper<Room> roomRowMapper = (rs, rowNum) -> {
 

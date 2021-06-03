@@ -27,6 +27,4 @@ public class RoomController {
     public PaymentDetailsDto getPayment(PaymentDetailsRequest paymentDetailsRequest) {
         return roomService.getPaymentDetailsDto(paymentDetailsRequest);
     }
-
-
 }
