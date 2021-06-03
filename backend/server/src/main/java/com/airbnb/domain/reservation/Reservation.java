@@ -1,44 +1,32 @@
 package com.airbnb.domain.reservation;
 
-import com.airbnb.domain.room.Room;
-import org.springframework.data.annotation.Id;
-
-import java.time.LocalDate;
-
 public class Reservation {
 
-    @Id
-    private final Long id;
-    private final Long userId;
-    private final Room room;
-    private final LocalDate checkIn;
-    private final LocalDate checkOut;
+    private final String login;
+    private final Long roomId;
+    private final String checkIn;
+    private final String checkOut;
 
-    public Reservation(Long id, Long userId, Room room, LocalDate checkIn, LocalDate checkOut) {
-        this.id = id;
-        this.userId = userId;
-        this.room = room;
+    public Reservation(String login, Long roomId, String checkIn, String checkOut) {
+        this.login = login;
+        this.roomId = roomId;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
     }
 
-    public Long getId() {
-        return id;
+    public String getLogin() {
+        return login;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getRoomId() {
+        return roomId;
     }
 
-    public Room getRoom() {
-        return room;
-    }
-
-    public LocalDate getCheckIn() {
+    public String getCheckIn() {
         return checkIn;
     }
 
-    public LocalDate getCheckOut() {
+    public String getCheckOut() {
         return checkOut;
     }
 }
