@@ -20,9 +20,7 @@ public class RoomRepository {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public List<Room> getRoomList(String checkIn, String  checkOut, int priceMin, int priceMax) {
-
-        String sql = "SELECT `pyrodb`.`room`.* , `pyrodb`.`reservation`.id FROM `pyrodb`.`room` LEFT JOIN `pyrodb`.`reservation`  ON `pyrodb`.`room`.id = `pyrodb`.`reservation`.roomId WHERE(`reservation`.id is null or `reservation`.checkIn < ? OR `reservation`.checkOut > ?) and (`room`.price > ? and `room`.price < ?)";
+    public List<Room> getRoomList(String checkIn, String checkOut, int priceMin, int priceMax) {
 
         RowMapper<Room> roomRowMapper = (rs, rowNum) -> {
 
@@ -59,7 +57,18 @@ public class RoomRepository {
         LocalDate parsedCheckIn = LocalDate.parse(checkIn, DateTimeFormatter.ISO_DATE);
         LocalDate parsedCheckOut = LocalDate.parse(checkOut, DateTimeFormatter.ISO_DATE);
 
-        List<Room> rooms = jdbcTemplate.query(sql,roomRowMapper, parsedCheckIn, parsedCheckOut, priceMin, priceMax);
+        String sql = "SELECT DISTINCT `pyrodb`.`room`.* "
+                + " FROM `pyrodb`.`room` LEFT JOIN `pyrodb`.`reservation`"
+                + " ON `pyrodb`.`room`.id = `pyrodb`.`reservation`.roomId "
+                + " AND ? < `room`.price AND ? <= `room`.price "
+                + " AND ( "
+                + " NOT (`reservation`.checkIn < ? AND `reservation`.checkOut < ?) "
+                + " OR NOT (? < `reservation`.checkIn AND `reservation`.checkOut < ?) "
+                + " OR NOT (`reservation`.checkIn < ? AND `reservation`.checkOut < ?) "
+                + ") WHERE `reservation`.id IS NULL "
+                + " ORDER BY `room`.id ";
+
+        List<Room> rooms = jdbcTemplate.query(sql, roomRowMapper, priceMin, priceMax, parsedCheckIn, parsedCheckIn, parsedCheckIn, parsedCheckOut, parsedCheckOut, parsedCheckOut);
 
         return rooms;
     }
