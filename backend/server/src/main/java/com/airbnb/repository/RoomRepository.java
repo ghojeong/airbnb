@@ -60,13 +60,12 @@ public class RoomRepository {
         String sql = "SELECT DISTINCT `pyrodb`.`room`.* "
                 + " FROM `pyrodb`.`room` LEFT JOIN `pyrodb`.`reservation`"
                 + " ON `pyrodb`.`room`.id = `pyrodb`.`reservation`.roomId "
-                + " AND ? < `room`.price AND ? <= `room`.price "
-                + " AND ( "
-                + " NOT (`reservation`.checkIn < ? AND `reservation`.checkOut < ?) "
-                + " OR NOT (? < `reservation`.checkIn AND `reservation`.checkOut < ?) "
-                + " OR NOT (`reservation`.checkIn < ? AND `reservation`.checkOut < ?) "
-                + ") WHERE `reservation`.id IS NULL "
-                + " ORDER BY `room`.id ";
+                + " AND ? < `room`.price AND `room`.price < ? "
+                + " WHERE `reservation`.id IS NULL OR ( "
+                + " NOT (`reservation`.checkIn < ? AND ? < `reservation`.checkOut ) "
+                + " AND NOT (? < `reservation`.checkIn AND `reservation`.checkOut < ?) "
+                + " AND NOT (`reservation`.checkIn < ? AND ? < `reservation`.checkOut) "
+                + " ) ORDER BY `room`.id ";
 
         List<Room> rooms = jdbcTemplate.query(sql, roomRowMapper, priceMin, priceMax, parsedCheckIn, parsedCheckIn, parsedCheckIn, parsedCheckOut, parsedCheckOut, parsedCheckOut);
 
