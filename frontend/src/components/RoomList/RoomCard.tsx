@@ -3,15 +3,16 @@ import { useEffect } from 'react';
 import { HiOutlineHeart } from 'react-icons/hi';
 import { BsStarFill } from 'react-icons/bs';
 import { useSetRecoilState } from "recoil";
-import { roomCardClickedState } from 'recoil/Atoms'
+import { roomCardClickedState, selectedRoomCardState } from 'recoil/Atoms'
 
 type Room = {
-    thum_image: string;
-    room_type: string;
-    room_name:string;
-    room_label: string;
-    star_rating: number;
-    review_label: string;
+    id: number;
+    thumImage: string;
+    roomType: string;
+    roomName:string;
+    roomLabel: string;
+    starRating: number;
+    reviewLabel: string;
     price: number;
 }
 
@@ -20,28 +21,33 @@ type RoomInformation = {
     // onClick: (event: React.MouseEvent<Element, MouseEvent>) => void;
 }
 
-const RoomCard = ({roomInfo: { thum_image, room_type, room_name, room_label, star_rating, review_label, price }}: RoomInformation) => {
+const RoomCard = ({roomInfo: { id, thumImage, roomType, roomName, roomLabel, starRating, reviewLabel, price }}: RoomInformation) => {
     const setIsClicked = useSetRecoilState(roomCardClickedState);
-    const popReservationModal = () => {
+    const setSelectedRoomCard = useSetRecoilState(selectedRoomCardState);
+    const popReservationModal = (e: React.MouseEvent<Element, MouseEvent>) => {
+        const target = e.target as HTMLElement;
+        const targetId = target.id;
+        console.log(targetId);
         setIsClicked(true);
+        setSelectedRoomCard(targetId);
     }
     return (
     <RoomCardLayout onClick={popReservationModal} className="room-card">
         <div>
-            <img src={thum_image}></img>
+            <img src={thumImage}></img>
         </div>
         <RoomCardInfoLayout>
             <div className="upper-container">
-                <div className="room-type">{room_type}
+                <div className="room-type">{roomType}
                     <button><HiOutlineHeart className="heart-icon"/></button>
                 </div>
-                <div className="room-name">{room_name}</div>
-                <div className="room-label">{room_label}</div>
+                <div className="room-name">{roomName}</div>
+                <div className="room-label">{roomLabel}</div>
             </div>
             <div className="lower-container">
                 <div className="price-per-night">₩{price} / 박</div>
                 <div className="total-price-and-rating">
-                    <div><BsStarFill color="red" className="star-icon"/>{star_rating} {review_label})</div>
+                    <div><BsStarFill color="red" className="star-icon"/>{starRating} {reviewLabel})</div>
                     <div className="total-price">총액 ₩1,493,159</div>
                 </div>
             </div>
@@ -61,8 +67,8 @@ const RoomCardLayout = styled.div`
     }
 
     img {
-        width: 100%;
-        height: 100%;
+        width: 35rem;
+        height: 25rem;
         border-radius: 20px;
     }
 `

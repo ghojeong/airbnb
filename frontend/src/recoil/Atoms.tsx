@@ -1,6 +1,11 @@
 import { atom, selector } from "recoil";
 import * as T from "./AtomTypes";
 
+export const selectedRoomCardState = atom({
+  key: "selectedRoomCardState",
+  default: "",
+})
+
 export const roomCardClickedState = atom({
   key: "roomCardClickState",
   default: false,
