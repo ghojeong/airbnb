@@ -11,20 +11,28 @@ function PriceRange() {
   const [roomPrice, setRoomPrice] = useRecoilState(roomPriceState);
   const $leftRange = useRef(null);
   const $rightRange = useRef(null);
+  const minPrice = 10000;
+  const maxPrice = 200000;
+  const range = useRef(null);
 
   function handleRight(e: React.ChangeEvent<HTMLInputElement>) {
     const target = e.target;
+    setRightValue(target.max);
     const min = parseInt(target.min);
     const max = parseInt(target.max);
     const value = Math.min();
     const rightValue: number | null = Number($rightInput.current?.value);
     console.log("right", rightValue);
+    const price = Math.max(Number(e.target.value), minPrice + 10000);
     setRoomPrice({ ...roomPrice, max: rightValue });
   }
 
   function handleLeft(e: React.ChangeEvent<HTMLInputElement>) {
     const target = e.target;
-    const { value, min, max } = target;
+    setLeftValue(target.min);
+
+    const price = Math.min(Number(e.target.value), maxPrice - 10000);
+
     const leftValue: number | null = Number($leftInput.current?.value);
     console.log("left", leftValue);
 
@@ -65,6 +73,9 @@ function PriceRange() {
     </PriceRangeLayout>
   );
 }
+// 클릭 -> 마우스 무브 이벤트 -> 움직일때 state 재정립 -> mouse move 이벤트로 pagex 를 변경 ... 그걸 업데이트 하면서 움직인다..
+//pixel -> min, range, slider 위치... 를측정한다..
+//mouse ..
 
 const PriceRangeLayout = styled.div`
   width: 100%;
@@ -98,7 +109,7 @@ const Track = styled.div`
 const RangeRight = styled.div`
   position: absolute;
   z-index: 2;
-  left: 75%; //여기
+  left: 80%; //여기
   right: 0%; // 여기
   bottom: 0;
   height: 100px;

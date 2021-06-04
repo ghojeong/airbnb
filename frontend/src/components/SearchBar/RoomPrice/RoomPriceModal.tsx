@@ -9,8 +9,8 @@ const RoomPriceModal = () => {
   return isClicked ? (
     <ModalLayout>
       <div className="price-modal-title">가격 범위</div>
-      <div className="price-range">₩100,000 ~ 1,000,000+</div>
-      <div className="price-average">평균 1박 요금은 ₩{}입니다.</div>
+      <div className="price-range">₩10,000 ~ 100,000+</div>
+      <div className="price-average">평균 1박 요금은 ₩100,150 입니다.</div>
       <PriceGraph />
       <PriceRange />
     </ModalLayout>
@@ -43,6 +43,7 @@ const ModalLayout = styled.div`
   .price-modal-title {
     font-weight: 700;
     font-size: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .price-range {
@@ -54,6 +55,7 @@ const ModalLayout = styled.div`
     padding-top: 1rem;
     font-size: 1.3rem;
     color: #979292b3;
+    margin-bottom: 4rem;
   }
 `;
 export default RoomPriceModal;
