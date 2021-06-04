@@ -31,7 +31,7 @@ VALUES ("https://1.bp.blogspot.com/-MjE-QArhY34/XpQiQCytneI/AAAAAAAALvk/FV7rJjGB
 INSERT INTO `pyrodb`.`room` (thumImage, roomType, roomName, roomLabel, publicAddress, personCapacity, starRating,
                            reviewLabel, latitude, longitude,
                            price, discount, cleaningFee, serviceFee, roomTax)
-VALUES ("https://img.theqoo.net/img/IOWKv.jpg", "벤의 집", "Spacious and Comfortable Cozy house #4",
+VALUES ("https://1.bp.blogspot.com/-jwAiH6grBmY/Xqyv9REGBZI/AAAAAAAANUg/o8DHCTs8zwYxDTCDlpbKUiRpbPAESUyawCLcBGAsYHQ/s640/%25EB%25BF%2594%25EB%258B%2598%25EC%259D%25B4%2B%25E3%2581%258A%25E3%2581%2595%25E3%2581%2584%2BRen%25C3%25A9e_5.jpg", "벤의 집", "Spacious and Comfortable Cozy house #4",
         "최대 인원 3명*원룸, 침대 1개, 나뭇잎, 헤어드라이어",
         "SUMMER 1(il)-dong, Gangnam-gu, 서울, 한국",
         2,
@@ -71,7 +71,7 @@ VALUES ("https://1.bp.blogspot.com/-jwAiH6grBmY/Xqyv9REGBZI/AAAAAAAANUg/o8DHCTs8
 INSERT INTO `pyrodb`.`room` (thumImage, roomType, roomName, roomLabel, publicAddress, personCapacity, starRating,
                            reviewLabel, latitude, longitude,
                            price, discount, cleaningFee, serviceFee, roomTax)
-VALUES ("https://img.theqoo.net/img/ZeUcV.jpg", "브로콜리의 집", "Spacious and Comfortable Cozy house #4",
+VALUES ("https://1.bp.blogspot.com/-jwAiH6grBmY/Xqyv9REGBZI/AAAAAAAANUg/o8DHCTs8zwYxDTCDlpbKUiRpbPAESUyawCLcBGAsYHQ/s640/%25EB%25BF%2594%25EB%258B%2598%25EC%259D%25B4%2B%25E3%2581%258A%25E3%2581%2595%25E3%2581%2584%2BRen%25C3%25A9e_5.jpg", "브로콜리의 집", "Spacious and Comfortable Cozy house #4",
         "최대 인원 3명*원룸, 침대 1개, 욕실, 사료, 밧줄, 해먹, 헤어드라이어",
         "React 3-dong, forest, 서울, 한국",
         5,
@@ -131,7 +131,7 @@ VALUES ("https://post-phinf.pstatic.net/MjAxODEyMTJfNzAg/MDAxNTQ0NTkzMDg1NTI3.Pn
 INSERT INTO `pyrodb`.`room` (thumImage, roomType, roomName, roomLabel, publicAddress, personCapacity, starRating,
                            reviewLabel, latitude, longitude,
                            price, discount, cleaningFee, serviceFee, roomTax)
-VALUES ("http://img.theqoo.net/img/tDtKd.png", "타키의 집", "Spacious and Comfortable Cozy house #4",
+VALUES ("https://1.bp.blogspot.com/-jwAiH6grBmY/Xqyv9REGBZI/AAAAAAAANUg/o8DHCTs8zwYxDTCDlpbKUiRpbPAESUyawCLcBGAsYHQ/s640/%25EB%25BF%2594%25EB%258B%2598%25EC%259D%25B4%2B%25E3%2581%258A%25E3%2581%2595%25E3%2581%2584%2BRen%25C3%25A9e_5.jpg", "타키의 집", "Spacious and Comfortable Cozy house #4",
         "노트북, 침대 1개, 모니터, 무선인터넷, 에어컨, 헤어드라이어",
         "Naver 12-dong, forest, 서울, 한국",
         3,
@@ -141,7 +141,7 @@ VALUES ("http://img.theqoo.net/img/tDtKd.png", "타키의 집", "Spacious and Co
 INSERT INTO `pyrodb`.`room` (thumImage, roomType, roomName, roomLabel, publicAddress, personCapacity, starRating,
                            reviewLabel, latitude, longitude,
                            price, discount, cleaningFee, serviceFee, roomTax)
-VALUES ("http://img.theqoo.net/img/WsrBs.jpg", "펭기의 집", "Spacious and Comfortable Cozy house #4",
+VALUES ("https://1.bp.blogspot.com/-jwAiH6grBmY/Xqyv9REGBZI/AAAAAAAANUg/o8DHCTs8zwYxDTCDlpbKUiRpbPAESUyawCLcBGAsYHQ/s640/%25EB%25BF%2594%25EB%258B%2598%25EC%259D%25B4%2B%25E3%2581%258A%25E3%2581%2595%25E3%2581%2584%2BRen%25C3%25A9e_5.jpg", "펭기의 집", "Spacious and Comfortable Cozy house #4",
         "와이파이, 스마트폰, 욕실 1개*주방, 무선인터넷, 에어컨, 헤어드라이어",
         "Kakao 2-dong, forest, 서울, 한국",
         3,
@@ -151,7 +151,7 @@ VALUES ("http://img.theqoo.net/img/WsrBs.jpg", "펭기의 집", "Spacious and Co
 INSERT INTO `pyrodb`.`room` (thumImage, roomType, roomName, roomLabel, publicAddress, personCapacity, starRating,
                            reviewLabel, latitude, longitude,
                            price, discount, cleaningFee, serviceFee, roomTax)
-VALUES ("https://namu.wiki/jump/O3WjXL0tmYgJke8TWWRB6GKIPlU%2BcZ1T7sfrFO%2BSHD%2F1%2BNhseCVJ4%2F2P9xn6CLss4hGiHK1pwDOIml7M0hA%2BtQ%3D%3D", "포크의 집", "Spacious and Comfortable Cozy house #4",
+VALUES ("https://1.bp.blogspot.com/-jwAiH6grBmY/Xqyv9REGBZI/AAAAAAAANUg/o8DHCTs8zwYxDTCDlpbKUiRpbPAESUyawCLcBGAsYHQ/s640/%25EB%25BF%2594%25EB%258B%2598%25EC%259D%25B4%2B%25E3%2581%258A%25E3%2581%2595%25E3%2581%2584%2BRen%25C3%25A9e_5.jpg", "포크의 집", "Spacious and Comfortable Cozy house #4",
         "마우스, 침대 1개, 욕실 1개*주방, 무선인터넷, 태블릿",
         "Line 7-dong, forest, 서울, 한국",
         3,
